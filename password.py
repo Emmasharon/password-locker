@@ -3,7 +3,7 @@ class User:
     Class that generates new instance of passwords
     '''
     users_list = []
-    def __init_(self,first_name,last_name,password):
+    def __init__(self,first_name,last_name,password):
         '''
         __init__ method that helps us define properties the object holds.
         Args:
