@@ -26,3 +26,13 @@ class TestUser(unittest.TestCase):
 
         if __name__ == '__main__':
             unittest.main()
+
+
+    def test_save_user(self):
+        '''
+        test case to test if the user object is saved into the user users_list
+        '''
+        self.new_user.save_user()
+        self.assertEqual(len(User.users_list),1)
+    if __name__ == '__main__':
+        unittest.main()

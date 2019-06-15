@@ -11,11 +11,10 @@ class User:
             last_name : New user last name.
             number: New user phone number.
         '''
-
             #instance variables
-            self.first_name: first_name
-            self.last_name: last_name
-            self.password: password
+        self.first_name: first_name
+        self.last_name: last_name
+        self.password: password
 
 class Credentials:
     '''
