@@ -8,6 +8,7 @@ class TestUser(unittest.TestCase):
     Args:
         unitest.TestCase: TestCase class for creating test cases
     '''
+#first test
     def setUp(self):
         '''
         Set up method to run before each test cases.
@@ -27,7 +28,7 @@ class TestUser(unittest.TestCase):
         if __name__ == '__main__':
             unittest.main()
 
-
+#second test
     def test_save_user(self):
         '''
         test case to test if the user object is saved into the user users_list
@@ -36,3 +37,17 @@ class TestUser(unittest.TestCase):
         self.assertEqual(len(User.users_list),1)
     if __name__ == '__main__':
         unittest.main()
+
+#fourth test
+    def test_delete_user(self):
+            '''
+            to test if we can remove a user from the user list
+            '''
+            self.new.new_user.save_user()
+            test_user = User("Test","user","xyz")
+            test_user.save_user()
+
+            self.new_user.delete_user()
+            self.assertEqual(len(User.user_list),1)
+if __name__ == '__main__':
+    unittest.main()
