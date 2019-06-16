@@ -26,7 +26,7 @@ class User:
 
 class Credentials:
     '''
-    Class to let user add save or delete passwords
+    Class to let user create class credentials, save credentials and generate passwords
     '''
     credentials_list = []
     def save_credentials(self):
@@ -35,12 +35,36 @@ class Credentials:
         '''
         Credentials.credentials_list.append(self)
 
-    def __init__(self,account_name,account_password):
+    def __init__(self,user_name,account_name,account_password):
         '''
         __init__ method that helps us define properties the object holds
         Args:
+            user_name: user_name.
             account_name: New accout name.
             account_password: New account password.
         '''
+        user_name: user_name
         self.account_name: account_name
         self.account_password: account_password
+
+    @classmethod
+    def copy_credentials(cls, account_name):
+        '''
+        Method that takes account_name and returns details matching that account_name
+        '''
+        for credential in cls.credentials_list:
+            if credential.account_name == account_name:
+                return credentials_list
+            else print(Wrong account name)
+
+    @classmethod
+    def display_credential(cls,user_name):
+        '''
+        Method to display the list of credential that has been save_credentials
+        '''
+        for credential in cls.credentials_list:
+            if credential.user_name == user_name:
+                user_credentials_list.append(credential)
+        return user_credentials_list
+
+    
