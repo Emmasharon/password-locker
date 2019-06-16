@@ -1,3 +1,7 @@
+import pyperclip
+import random
+import string
+
 class User:
     '''
     Class that generates new instance of passwords
@@ -84,3 +88,11 @@ class Credentials:
         find_credential = Credential.find_by_account_name(account_name)
 
         return pyperclip.copy(find_credential.password)
+
+    @classmethod
+    def generate_password(size=6, char=string+string.digits):
+        '''
+        Function to generate random password with six digits
+        '''
+        gen_password = ''.join(random.choice(char) for _ in range(size))
+        return gen_password
