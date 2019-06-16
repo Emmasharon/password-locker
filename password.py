@@ -28,3 +28,19 @@ class Credentials:
     '''
     Class to let user add save or delete passwords
     '''
+    credentials_list = []
+    def save_credentials(self):
+        '''
+        save credentials objects into credentials_list
+        '''
+        Credentials.credentials_list.append(self)
+
+    def __init__(self,account_name,account_password):
+        '''
+        __init__ method that helps us define properties the object holds
+        Args:
+            account_name: New accout name.
+            account_password: New account password.
+        '''
+        self.account_name: account_name
+        self.account_password: account_password
