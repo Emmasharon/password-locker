@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 from password import User
 from password import Credentials
 
@@ -68,7 +69,7 @@ class TestUser(unittest.TestCase):
             unitest.TestCase: TestCase class for creating test cases
         '''
 
-        def  test_check_user(self):
+        def  test_verify_user(self):
             '''
             Function to check if the login function works well
             '''
@@ -81,7 +82,7 @@ class TestUser(unittest.TestCase):
                     current_user == user.first_name
                     return current_user
 
-            self.assertEqual(current_user,Credential.check_user(userx.password,userx.first_name))
+            self.assertEqual(current_user,Credential.verify_user(userx.password,userx.first_name))
 
 
         def setUp(self):

@@ -1,4 +1,4 @@
-# import pyperclip
+import pyperclip
 import random
 import string
 
@@ -9,12 +9,6 @@ class User:
     Class that generates new instance of passwords
     '''
     users_list = []
-    def save_user(self):
-        '''
-        save user objects into users_list
-        '''
-
-        User.users_list.append(self)
 
 
     def __init__(self,first_name,last_name,password):
@@ -29,6 +23,25 @@ class User:
         self.first_name: first_name
         self.last_name: last_name
         self.password: password
+
+
+    @classmethod
+    def verify_user(cls,first_name,password):
+        '''
+        to verify user
+        '''
+        for user in cls.users_list:
+            if user.first_name == first_name and user.password == password:
+                return user
+
+    def save_user(self):
+        '''
+        save user objects into users_list
+        '''
+
+        User.users_list.append(self)
+
+
 
 class Credentials:
     '''
@@ -60,7 +73,7 @@ class Credentials:
         '''
         for credential in cls.credentials_list:
             if credential.account_name == account_name:
-                return credentials_list
+                return credential
 
     @classmethod
     def display_credential(cls,user_name):
@@ -69,8 +82,8 @@ class Credentials:
         '''
         for credential in cls.credentials_list:
             if credential.user_name == user_name:
-                user_credentials_list.append(credential)
-                return user_credentials_list
+                cls.credentials_list.append(credential)
+                return cls.credentials_list
 
     @classmethod
     def find_by_account_name(cls, account_name):
@@ -79,19 +92,19 @@ class Credentials:
         '''
         for credential in cls.credentials_list:
             if credential.site_name == account_name:
-                return credentials_list
+                return credential
 
     @classmethod
     def copy_credential(cls, site_name):
         '''
         Class method that copies a credential's info after the credential's account name is entered
         '''
-        find_credential = Credential.find_by_account_name(account_name)
+        find_credential = Credentials.find_by_account_name(site_name)
 
         return pyperclip.copy(find_credential.password)
 
     @classmethod
-    def generate_password(size=6, char=string + string.digits):
+    def gen_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
         '''
         Function to generate random password with six digits
         '''
