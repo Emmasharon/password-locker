@@ -68,6 +68,22 @@ class TestUser(unittest.TestCase):
             unitest.TestCase: TestCase class for creating test cases
         '''
 
+        def  test_check_user(self):
+            '''
+            Function to check if the login function works well
+            '''
+            self.new_user = User('olweezy','rachy','xyz100')
+            self.new_user.save_user()
+            user@ = User('olweezy','rachy','xyz100')
+            user@.save_user()
+            for user in User.users_list:
+                if user.first_name == user@.first_name and user.password == user@.password:
+                    current_user == user.first_name
+                    return current_user
+
+            self.assertEqual(current_user,Credential.check_user(user@.password,user@.first_name))
+
+
         def setUp(self):
             '''
             Create an account's credentials before each testing
