@@ -1,4 +1,4 @@
-import pyperclip
+# import pyperclip
 import random
 import string
 
@@ -61,7 +61,6 @@ class Credentials:
         for credential in cls.credentials_list:
             if credential.account_name == account_name:
                 return credentials_list
-            else print(Wrong account name)
 
     @classmethod
     def display_credential(cls,user_name):
@@ -71,7 +70,7 @@ class Credentials:
         for credential in cls.credentials_list:
             if credential.user_name == user_name:
                 user_credentials_list.append(credential)
-                    return user_credentials_list
+                return user_credentials_list
 
     @classmethod
     def find_by_account_name(cls, account_name):
@@ -92,7 +91,7 @@ class Credentials:
         return pyperclip.copy(find_credential.password)
 
     @classmethod
-    def generate_password(size=6, char=string+string.digits):
+    def generate_password(size=6, char=string + string.digits):
         '''
         Function to generate random password with six digits
         '''

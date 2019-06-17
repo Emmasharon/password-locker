@@ -74,14 +74,14 @@ class TestUser(unittest.TestCase):
             '''
             self.new_user = User('olweezy','rachy','xyz100')
             self.new_user.save_user()
-            user@ = User('olweezy','rachy','xyz100')
-            user@.save_user()
+            userx = User('olweezy','rachy','xyz100')
+            userx = save_user()
             for user in User.users_list:
-                if user.first_name == user@.first_name and user.password == user@.password:
+                if user.first_name == userx.first_name and user.password == userx.password:
                     current_user == user.first_name
                     return current_user
 
-            self.assertEqual(current_user,Credential.check_user(user@.password,user@.first_name))
+            self.assertEqual(current_user,Credential.check_user(userx.password,userx.first_name))
 
 
         def setUp(self):
@@ -110,7 +110,7 @@ class TestUser(unittest.TestCase):
             facebook = Credential('olweezy','facebook','xyz100')
             self.assertEqual(len(Credential.credentials_list), 2)
             if __name__ == '__main__':
-            unittest.main()
+                unittest.main()
 
         def tearDown(self):
             '''
