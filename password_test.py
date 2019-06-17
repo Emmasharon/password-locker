@@ -131,6 +131,16 @@ class TestUser(unittest.TestCase):
             self.assertEqual(
                 len(Credential.display_credentials(facebook.user_name)), 3)
 
+        def test_find_by_site_name(self):
+            '''
+            Test to check if the find_by_site_name method works
+            '''
+            self.new_credential.save_credentials()
+            facebook = Credential('olweezy', 'facebook', 'xyz100')
+            twitter.save_credentials()
+            credential_exists = Credential.find_by_site_name('facebook')
+            self.assertEqual(credential_exists, facebook)
+
         def test_copy_credential(self):
             '''
             Test to check if the copy a credential method copies the correct credential
@@ -147,4 +157,5 @@ class TestUser(unittest.TestCase):
             self.assertEqual('xyz100', pyperclip.paste())
             print(pyperclip.paste())
 
-        
+        if __name__ == '__main__':
+            unittest.main()
