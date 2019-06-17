@@ -27,37 +27,43 @@ def gen_password():
 	'''
 	Function to generate a password automatically
 	'''
-	gen_password = Credentials.gen_password()
+	gen_password = Credential.gen_password()
 	return gen_password
 
 def create_credential(user_name,account_name,password):
 	'''
 	Function to create a new credential instance
 	'''
-	new_credential=Credentials(user_name,account_name,password)
+	new_credential=Credential(user_name,account_name,password)
 	return new_credential
 
 def save_credential(credential):
 	'''
 	Function to save a new created credential
 	'''
-	Credentials.save_credentials(credential)
+	Credential.save_credentials(credential)
 
 def display_credentials(user_name):
 	'''
 	Function to display credentials saved by a user
 	'''
-	return Credentials.display_credential(user_name)
+	return Credential.display_credentials(user_name)
 
 def copy_credential(account_name):
 	'''
 	Function to copy a credentials' details to the clipboard
 	'''
-	return Credentials.copy_credential(account_name)
+	return Credential.copy_credential(account_name)
 
 def main():
     print(' ')
-	print('Start by creating an account or log in if you have one.' ) 
+    print('WELCOME TO PASSWORD-LOCKER')
+    while True:
+        print(' ')
+        print('This is a cool program that lets you store all your passwords in one single account.')
+def main():
+	print(' ')
+	print('Start by creating an account or log in if you have one.')
 	while True:
 		print(' ')
 		print("*"*100)
