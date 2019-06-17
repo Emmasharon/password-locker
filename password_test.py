@@ -1,6 +1,6 @@
 import unittest
 from password import User
-from password import Credentials 
+from password import Credentials
 
 class TestUser(unittest.TestCase):
     '''
@@ -23,7 +23,7 @@ class TestUser(unittest.TestCase):
         '''
         self.assertEqual(self.new_user.first_name,"olweezy")
         self.assertEqual(self.new_user.last_name,"rachy")
-        self.assertEqual(self.new_user.password,"fifa")
+        self.assertEqual(self.new_user.password,"fifa247")
 
 
         if __name__ == '__main__':
@@ -39,19 +39,19 @@ class TestUser(unittest.TestCase):
     if __name__ == '__main__':
         unittest.main()
 
-#fourth test
-    def test_delete_user(self):
-            '''
-            to test if we can remove a user from the user list
-            '''
-            self.new.new_user.save_user()
-            test_user = User("Test","user","xyz")
-            test_user.save_user()
-
-            self.new_user.delete_user()
-            self.assertEqual(len(User.user_list),1)
-    if __name__ == '__main__':
-         unittest.main()
+# #fourth test
+#     def test_delete_user(self):
+#             '''
+#             to test if we can remove a user from the user list
+#             '''
+#             self.new.new_user.save_user()
+#             test_user = User("Test","user","xyz")
+#             test_user.save_user()
+#
+#             self.new_user.delete_user()
+#             self.assertEqual(len(User.user_list),1)
+#     if __name__ == '__main__':
+#          unittest.main()
 
     # def delete_user(self):
     #
@@ -60,3 +60,28 @@ class TestUser(unittest.TestCase):
     # '''
     #
     # User.user_list.remove(self)
+
+    class TestCredentials(unittest.TestCase):
+        '''
+        Test class for testing cases of the credentials class behaviour
+        Args:
+            unitest.TestCase: TestCase class for creating test cases
+        '''
+
+        def setUp(self):
+            '''
+            Create an account's credentials before each testing
+            '''
+            self.new_credential = Credential('olweezy','twitter','xyz100')
+
+        def test_init(self):
+            '''
+            test_init test if the object is initialized well
+            '''
+            self.assertEqual(self.new_credential.user_name,"olweezy")
+            self.assertEqual(self.new_credential.account_name,"twitter")
+            self.assertEqual(self.new_credential.account_password,"xyz100")
+
+
+            if __name__ == '__main__':
+                unittest.main()
