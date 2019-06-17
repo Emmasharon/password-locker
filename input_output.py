@@ -88,4 +88,79 @@ def main():
 			user_name = input('Enter your first name - ').strip()
 			password = str(input('Enter your password - '))
 			user_exists = verify_user(user_name,password)
-			
+			if user_exists == user_name:
+				print(" ")
+				print(f'Welcome {user_name}.Choose an option to continue')
+				print(' ')
+				while True:
+					print("-"*60)
+					print('Navigation codes: \n cred-Add credentials to your account \n disp-Display credentials added \n copy-copy password to clipboard \n x-exit')
+					short_code = input('Enter a choice: ').lower().strip()
+					print("-"*60)
+					if short_code == 'x':
+						print(" ")
+						print(f'Goodbye {user_name}')
+						break
+					elif short_code == 'cred':
+						print(' ')
+						print('Enter your credential details:')
+						site_name = input('Enter the name- ').strip()
+						account_name = input('Enter your account\'s name - ').strip()
+						while True:
+							print(' ')
+							print("-"*60)
+							print('Add password: \n mine-enter existing password \n rand-generate a random password \n x-exit')
+							psw_choice = input('Select an option: ').lower().strip()
+							print("-"*60)
+							if psword_choice == 'mine':
+								print(" ")
+								password = input('Enter your password: ').strip()
+								break
+							elif psword_choice == 'new':
+								password = generate_password()
+								break
+							elif psword_choice == 'x':
+								break
+							else:
+								print('You entered a wrong password. Try again')
+						save_credential(create_credential(user_name,account_name,password))
+						print(' ')
+						print(f'Credential Created: Account Name: {account_name} - Password: {password}')
+						print(' ')
+					elif short_code == 'disp':
+						print(' ')
+						if display_credentials(user_name):
+							print('These are you saved accounts')
+							print(' ')
+							for credential in display_credentials(user_name):
+								print(f'Site Name: {credential.site_name} - Account Name: {credential.account_name} - Password: {credential.password}')
+							print(' ')
+						else:
+							print(' ')
+							print("You have no accounts saved")
+							print(' ')
+					elif short_code == 'copy':
+						print(' ')
+						chosen_site = input('What account do you want to copy ')
+						copy_credential(chosen_account)
+						print('')
+					else:
+						print('Oops! Wrong option entered. Try again.')
+
+			else:
+				print(' ')
+				print('You have entered the wong details. Try again')
+
+		else:
+			print("-"*60)
+			print(' ')
+			print('Something went wrong. Try again.')
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()
