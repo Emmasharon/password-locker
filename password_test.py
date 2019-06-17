@@ -101,3 +101,50 @@ class TestUser(unittest.TestCase):
 
             if __name__ == '__main__':
                 unittest.main()
+
+        def test_save_user(self):
+            '''
+            test case to test if the credentials object is saved into the credentials_list
+            '''
+            self.new_credential.save_credentials()
+            facebook = Credential('olweezy','facebook','xyz100')
+            self.assertEqual(len(Credential.credentials_list), 2)
+            if __name__ == '__main__':
+            unittest.main()
+
+        def tearDown(self):
+            '''
+            Function to clear the credentials list after every test
+            '''
+            Credential.credentials_list = []
+            User.users_list = []
+
+        def test_display_credentials(self):
+            '''
+            Test to check if the display_credentials method displays the correct credentials.
+            '''
+            self.new_credential.save_credentials()
+            facebook = Credential('ray', 'facebook', 'xyz100')
+            facebook.save_credentials()
+            instagram = Credential('olweezy', 'Instagram', 'abc100')
+            instagram.save_credentials()
+            self.assertEqual(
+                len(Credential.display_credentials(facebook.user_name)), 3)
+
+        def test_copy_credential(self):
+            '''
+            Test to check if the copy a credential method copies the correct credential
+            '''
+            self.new_credential.save_credentials()
+            facebook = Credential('olweezy', 'facebook', 'xyz100')
+            twitter.save_credentials()
+            find_credential = None
+            for credential in Credential.user_credentials_list:
+                find_credential = Credential.find_by_account_name(
+                    credential.account_name)
+                return pyperclip.copy(find_credential.password)
+            Credential.copy_credential(self.new_credential.account_name)
+            self.assertEqual('xyz100', pyperclip.paste())
+            print(pyperclip.paste())
+
+        
