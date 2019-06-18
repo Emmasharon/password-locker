@@ -25,14 +25,14 @@ class User:
         self.password: password
 
 
-    @classmethod
-    def verify_user(cls,first_name,password):
-        '''
-        to verify user
-        '''
-        for user in cls.users_list:
-            if user.first_name == first_name and user.password == password:
-                return user
+    # @classmethod
+    # def verify_user(cls,first_name,password):
+    #     '''
+    #     to verify user
+    #     '''
+    #     for user in cls.users_list:
+    #         if User.first_name == first_name and User.password == password:
+    #             return user
 
     def save_user(self):
         '''
@@ -48,23 +48,33 @@ class Credentials:
     Class to let user create class credentials, save credentials and generate passwords
     '''
     credentials_list = []
+
+    def __init__(self,account_name,password):
+        '''
+        __init__ method that helps us define properties the object holds
+        Args:
+
+            account_name: New credential name.
+            password: New credential password
+
+        '''
+        # self.first_name: first_name
+        self.account_name: account_name
+        self.password: password
+
+    @classmethod
     def save_credentials(self):
         '''
         save credentials objects into credentials_list
         '''
-        Credentials.credentials_list.append(self)
+        Credentials.credentials_list.append(self,account_name,password)
 
-    def __init__(self,user_name,account_name,account_password):
+    @classmethod
+    def create_credentials(self):
         '''
-        __init__ method that helps us define properties the object holds
-        Args:
-            user_name: user_name.
-            account_name: New accout name.
-            account_password: New account password.
+        create credentials objects into credentials_list
         '''
-        user_name: user_name
-        self.account_name: account_name
-        self.account_password: account_password
+        Credentials.credentials_list.append(self)
 
     @classmethod
     def copy_credentials(cls, account_name):
@@ -76,13 +86,13 @@ class Credentials:
                 return credential
 
     @classmethod
-    def display_credential(cls,user_name):
+    def display_credentials(cls, account_name):
         '''
         Method to display the list of credential that has been save_credentials
         '''
         for credential in cls.credentials_list:
-            if credential.user_name == user_name:
-                cls.credentials_list.append(credential)
+            if credential.first_name == account_name:
+                cls.credentials_list.append()
                 return cls.credentials_list
 
     @classmethod
@@ -91,15 +101,15 @@ class Credentials:
         Method to take in account name and return credentials for that account
         '''
         for credential in cls.credentials_list:
-            if credential.site_name == account_name:
+            if credential.account_name == account_name:
                 return credential
 
     @classmethod
-    def copy_credential(cls, site_name):
+    def copy_credential(cls, account_name):
         '''
         Class method that copies a credential's info after the credential's account name is entered
         '''
-        find_credential = Credentials.find_by_account_name(site_name)
+        find_credential = Credentials.find_by_account_name(account_name)
 
         return pyperclip.copy(find_credential.password)
 
