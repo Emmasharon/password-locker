@@ -12,7 +12,7 @@ the application allows the user to:
 * Copy my credentials to the clipboard
 
 ## SetUp and Installation Requirements
-### You need to hav these installed:
+### You need to have these installed:
 * python3.6
 * pip
 * pyperclip
